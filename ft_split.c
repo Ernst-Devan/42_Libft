@@ -61,6 +61,7 @@ void	is_set(char const *s, char c, int *i, char **result)
 			j++;
 			m = 0;
 			result[j][m] = s[*i];
+			m++;
 		}
 		(*i)++;
 	}
@@ -84,8 +85,6 @@ char	**ft_split(char const *s, char c)
 	int	j;
 	int	count;
 
-	(void)c;
-
 	i = 0;
 	j = 0;
 	count  = 0;
@@ -102,20 +101,4 @@ char	**ft_split(char const *s, char c)
 		i++;
 	is_set(s, c, &i, result);
 	return (result);
-}
-
-int	main(void)
-{
-	char **test;
-	
-	test = ft_split("   Je  veux     savoir", ' ');
-	
-	int i;
-
-	i = 0;
-	while (i < 3)
-	{
-		printf("%s \n", test[i]);
-		i++;
-	}
 }
