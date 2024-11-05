@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernstdevan <ernstdevan@student.42.fr>      +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 18:45:21 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/04 16:21:22 by ernstdevan       ###   ########.fr       */
+/*   Updated: 2024/11/05 23:12:32 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,26 @@ void	is_set(char const *s, char c, int *i, char **result)
 
 	j = 0;
 	m = 0;
-	while (s[*i] != '\0')
+	while (s[*i] != '\0' && j < count_words((char *)s))
 	{
 		if (s[*i] != c)
 		{
-			result[j][m] = s[*i];
-			m++;
+			result[j][m++] = s[*i];
 		}
 		if (s[*i] == c)
 		{
 			while (s[*i] == c)
-				(*i)++;
-			result[j][m] = '\0';
-			j++;
+					(*i)++;
+			result[j++][m] = '\0';
 			m = 0;
-			result[j][m] = s[*i];
-			m++;
+			if (j >= count_words((char *)s))
+				break;
+			result[j][m++] = s[*i];
 		}
 		(*i)++;
 	}
+	if (j < count_words((char *)s))
+		result[j][m] = '\0';
 }
 
 

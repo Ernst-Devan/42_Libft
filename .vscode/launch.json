@@ -1,13 +1,18 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "name": "(gdb) Attach",
+            "name": "Debug (GDB)",
             "type": "cppdbg",
-            "request": "attach",
-            "program": "enter program name, for example ${workspaceFolder}/a.out",
+            "request": "launch",
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
             "MIMode": "gdb",
+
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -15,31 +20,16 @@
                     "ignoreFailures": true
                 },
                 {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
+                    "description": "Set array visualization limit",
+                    "text": "set print elements 100",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Set array print format",
+                    "text": "set print array on",
+                    "ignoreFailures": false
                 }
             ]
-        },
-        {
-            "name": "Debug",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${Libft}/a.out", // Point to a.out
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "C/C++: gcc build active file"
         }
     ]
 }
