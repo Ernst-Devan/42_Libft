@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernstdevan <ernstdevan@student.42.fr>      +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:51:24 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/10/13 20:46:33 by ernstdevan       ###   ########.fr       */
+/*   Updated: 2024/11/07 22:04:20 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if ((((char *)s)[i]) == c)
+		if ((((unsigned char *)s)[i]) == (unsigned char)c)
 		{
 			return (((char *) s) + i);
 		}

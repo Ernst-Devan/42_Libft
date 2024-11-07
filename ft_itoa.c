@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 23:07:42 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/06 00:43:12 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/06 01:19:28 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Check negatives values
 
-int	intlen(long int n)
+static int	intlen(long int n)
 {
 	unsigned int	count;
 
@@ -27,7 +27,7 @@ int	intlen(long int n)
 	return (count);
 }
 
-void	strreverse(char *str, int sign)
+static void	strreverse(char *str, int sign)
 {
 	int		i;
 	int		j;
@@ -45,7 +45,7 @@ void	strreverse(char *str, int sign)
 	}
 }
 
-void	manage_sign(int *sign, int *i, long int *num)
+static void	manage_sign(int *sign, int *i, long int *num)
 {
 	if (*num < 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 18:45:21 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/05 23:12:32 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/06 11:52:33 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	is_set(char const *s, char c, int *i, char **result)
 }
 
 
-void 	next_words(char *s, int *j, int *count)
+static void 	next_words(char *s, int *j, int *count)
 {
 	while (s[*j] <= 32 && s[*j] != '\0')
 		(*j)++;
@@ -86,6 +86,8 @@ char	**ft_split(char const *s, char c)
 	int	j;
 	int	count;
 
+	if (ft_strlen((char *)s) == 0)
+		return(NULL);
 	i = 0;
 	j = 0;
 	count  = 0;
