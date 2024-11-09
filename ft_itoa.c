@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 23:07:42 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/06 01:19:28 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/09 18:51:01 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	intlen(long int n)
 
 static void	strreverse(char *str, int sign)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t	j;
 	char	temp;
 
 	i = 0 + sign;
@@ -45,7 +45,7 @@ static void	strreverse(char *str, int sign)
 	}
 }
 
-static void	manage_sign(int *sign, int *i, long int *num)
+static void	manage_sign(int *sign, size_t *i, long int *num)
 {
 	if (*num < 0)
 	{
@@ -57,8 +57,8 @@ static void	manage_sign(int *sign, int *i, long int *num)
 
 char	*ft_itoa(int n)
 {
-	int			i;
-	int			sign;
+	size_t			i;
+	int		sign;
 	char		*result;
 	long int	num;
 
@@ -68,7 +68,7 @@ char	*ft_itoa(int n)
 	sign = 0;
 	i = 0;
 	manage_sign(&sign, &i, &num);
-	result = malloc(sizeof(int) * (intlen(num) + 1 + sign));
+	result = malloc(sizeof(int) * (intlen(num) + sign + 1));
 	if (!result)
 		return (NULL);
 	while (num > 0)

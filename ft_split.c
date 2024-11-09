@@ -6,70 +6,66 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 18:45:21 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/06 11:52:33 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/09 18:30:18 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-int	count_words(char *s)
+static int	count_words(const char *s, char c)
 {
 	int	i;
 	int	count;
 
 	count = 0;
 	i = 0;
-	while (s[i] <= 32)
+	while (s[i] == c)
 		i++;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		while ((s[i] >= 33 && s[i] <= 126) && s[i] != '\0')
+		while (s[i] != c && s[i])
 			i++;
-		while (s[i] <= 32 && s[i] != '\0')
+		while (s[i] == c && s[i])
 			i++;
 		count++;
 	}
 	return (count);
 }
+//static void	cleanup()
+//{
 
+//}
 
-void	cleanup()
-{
-
-}
-
-void	is_set(char const *s, char c, int *i, char **result)
+static void	is_set(char const *s, char c, int *i, char **result)
 {
 	int	j;
 	int	m;
 
 	j = 0;
 	m = 0;
-	while (s[*i] != '\0' && j < count_words((char *)s))
+	while (s[*i] && j < count_words(s, c))
 	{
 		if (s[*i] != c)
-		{
 			result[j][m++] = s[*i];
-		}
-		if (s[*i] == c)
+		else
 		{
 			while (s[*i] == c)
 					(*i)++;
-			result[j++][m] = '\0';
+			(*i)--;
+			result[j][m] = '\0';
 			m = 0;
-			if (j >= count_words((char *)s))
+			if (j >= count_words(s, c))
 				break;
-			result[j][m++] = s[*i];
+			j++;
 		}
 		(*i)++;
 	}
-	if (j < count_words((char *)s))
+	if (j < count_words(s , c))
 		result[j][m] = '\0';
 }
 
 
-static void 	next_words(char *s, int *j, int *count)
+static void 	next_words(const char *s, int *j, int *count)
 {
 	while (s[*j] <= 32 && s[*j] != '\0')
 		(*j)++;
@@ -86,17 +82,17 @@ char	**ft_split(char const *s, char c)
 	int	j;
 	int	count;
 
-	if (ft_strlen((char *)s) == 0)
+	if (ft_strlen(s) == 0)
 		return(NULL);
 	i = 0;
 	j = 0;
 	count  = 0;
-	result = malloc(sizeof(char *) * (count_words((char *)s) + 1));
-	while (i < count_words((char *)s))
+	result = malloc(sizeof(char) * (count_words(s,c) + 1));
+	while (i < count_words(s, c))
 	{
-		next_words((char *)s, &j, &count);
+		next_words(s, &j, &count);
 		result[i] = malloc(sizeof(char) * (count + 1));
-		(i)++;
+		i++;
 		count = 0;
 	}
 	i = 0;

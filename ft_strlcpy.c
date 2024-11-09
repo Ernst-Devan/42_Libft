@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernstdevan <ernstdevan@student.42.fr>      +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 18:01:12 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/10/25 22:09:24 by ernstdevan       ###   ########.fr       */
+/*   Updated: 2024/11/08 11:42:57 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 	}
 	if (n > 0)
 		dest[i] = '\0';
-	return ((size_t)ft_strlen((char *)src));
+	return (ft_strlen(src));
 }

@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 00:57:20 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/06 11:36:47 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/08 11:43:24 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*result;
 
 	i = 0;
-	result = malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
+	result = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!result)
 		return (NULL);
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		result[i] = (*f)(i, s[i]);
 		i++;

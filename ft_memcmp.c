@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernstdevan <ernstdevan@student.42.fr>      +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:32:00 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/10/25 22:16:58 by ernstdevan       ###   ########.fr       */
+/*   Updated: 2024/11/09 17:43:42 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_abs(int num)
-{
-	if (num < 0)
-		num *= -1;
-	return (num);
-}
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

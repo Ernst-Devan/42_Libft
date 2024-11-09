@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 18:04:10 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/09 19:25:40 by dernst           ###   ########lyon.fr   */
+/*   Created: 2024/11/09 18:49:20 by dernst            #+#    #+#             */
+/*   Updated: 2024/11/09 19:21:46 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putnbr_fd (int n, int fd)
 {
-	size_t	i;
-	int		last_i;
+	char	current;
+	long int nb;
 
-	i = 0;
-	last_i = -1;
-	while (s[i])
+	nb = n;
+	if (nb < 0)
 	{
-		if (s[i] == c % 256)
-			last_i = i;
-		i++;
+		write(fd, "-", 1);
+		nb *= -1;
 	}
-	if (c % 256 == '\0')
-		return ((char *)(&s[i]));
-	if (last_i == -1)
-		return (NULL);
-	return ((char *)(&s[last_i]));
+	if (nb > 9)
+	{
+		current = (nb % 10) + '0';
+		ft_putnbr_fd(nb / 10, fd);
+		write(fd, &current, 1);
+	}
+	else
+	{
+		current = nb + '0';
+		write(fd, &current, 1);
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernstdevan <ernstdevan@student.42.fr>      +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:23:44 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/02 18:23:29 by ernstdevan       ###   ########.fr       */
+/*   Updated: 2024/11/09 19:26:02 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "libft.h"
 
-int	check_set(char c, char *set)
+static int	check_set(char c, char *set)
 {
 	int	i;
 
@@ -30,28 +30,21 @@ int	check_set(char c, char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
 	int		start;
 	int		end;
 	char	*result;
 
-	i = 0;
-	while (check_set(s1[i], (char *) set) == 1 && s1[i] != '\0')
-		i++;
-	start = i;
-	i = ft_strlen((char *)s1) - 1;
-	while (check_set(s1[i], (char *) set) == 1 && i >= 0)
-		i--;
-	end = i;
+	start = 0;
+	end = ft_strlen((char *)s1) - 1;
+	while (check_set(s1[start], (char *) set) == 1 && s1[start] != '\0')
+		start++;
+	while (check_set(s1[end], (char *) set) == 1 && end >= 0)
+		end--;
+	if (start > end)
+		return (result = malloc(1), result[0] = '\0', result);
 	result = malloc((end - start) + 2);
 	if (!result)
 		return (NULL);
-	i = 0;
-	while ((i + start <= end) && (end - start + 1 >= 0))
-	{
-		result[i] = s1[start + i];
-		i++;
-	}
-	result[i] = '\0';
+	ft_strlcpy(result, s1 + start, end - start + 2);
 	return (result);
 }
