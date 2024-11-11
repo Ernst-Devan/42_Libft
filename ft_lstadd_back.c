@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 21:31:24 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/11 23:24:15 by dernst           ###   ########lyon.fr   */
+/*   Created: 2024/11/11 22:04:05 by dernst            #+#    #+#             */
+/*   Updated: 2024/11/11 22:36:56 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
-	int	result;
-	int	sign;
+	t_list *temp;
 
-	i = 0;
-	result = 0;
-	sign = 1;
-	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (!new)
+		return;
+	if (!(*lst))
 	{
-		if (nptr[i] == '-')
-			sign = -1;
-		i++;
+		(*lst) = new;
+		return;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	temp = *lst;
+	while (temp->next)
 	{
-		result *= 10;
-		result += nptr[i] - '0';
-		i++;
+		temp = temp->next;
 	}
-	return (result * sign);
-}
-int main(void)
-{
-	printf("%d", ft_atoi("1234"));
+	temp->next = new;
 }
