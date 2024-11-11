@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 22:04:05 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/11 22:36:56 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:22:22 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!new)
-		return;
+		return ;
 	if (!(*lst))
 	{
 		(*lst) = new;
-		return;
+		return ;
 	}
 	temp = *lst;
 	while (temp->next)
-	{
 		temp = temp->next;
-	}
 	temp->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:45:41 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/11 21:51:28 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:21:45 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	size_t count;
+	size_t	count;
 
 	count = 0;
 	while (lst)

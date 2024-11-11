@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:46:07 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/08 11:46:24 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:49:45 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strdup(const char *s)
 {
-	int		size;
-	int		i;
+	size_t	size;
+	size_t	i;
 	char	*dup;
 
 	i = 0;

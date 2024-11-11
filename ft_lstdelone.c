@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 22:39:07 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/11 23:50:08 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:24:59 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst)
-		return;
+		return ;
 	if (!lst->content)
-		return;
-	lst->content = (*del)(lst);
+		return ;
 	free(lst->content);
 }

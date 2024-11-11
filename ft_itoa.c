@@ -6,13 +6,11 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 23:07:42 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/09 21:41:19 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:42:48 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// Check negatives values
 
 static int	intlen(long int n)
 {

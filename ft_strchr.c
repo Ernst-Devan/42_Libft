@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:57:09 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/09 19:25:12 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:46:19 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] || (char)c == '\0')
 	{
-		if ((int)s[i] == (unsigned char)c)
+		if (s[i] == (unsigned char)c)
 			return (& (((char *)s)[i]));
 		i++;
 	}

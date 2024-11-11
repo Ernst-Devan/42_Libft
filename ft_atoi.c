@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 21:31:24 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/11 23:24:15 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:50:22 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	result;
-	int	sign;
+	size_t	i;
+	size_t	result;
+	int		sign;
 
 	i = 0;
 	result = 0;
@@ -36,8 +36,4 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (result * sign);
-}
-int main(void)
-{
-	printf("%d", ft_atoi("1234"));
 }

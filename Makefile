@@ -9,6 +9,7 @@ SRC =	ft_isalpha.c \
 		ft_memset.c \
 		ft_bzero.c \
 		ft_memcpy.c \
+		ft_memchr.c \
 		ft_memmove.c \
 		ft_strlcpy.c \
 		ft_strlcat.c \
@@ -40,108 +41,22 @@ SRC =	ft_isalpha.c \
 		ft_lstadd_back.c \
 
 OBJ = $(SRC:.c=.o)
+NAME = libft.a
 
 %.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-make: $(OBJ)
-	$(CC) $(OBJ) $(CFLAGS) 
+all: $(NAME) clean
+
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 clean: 
-	rm -f *.o
+	rm -f $(OBJ)
 
+fclean: clean
+	rm -f $(NAME)
 
+re: fclean $(NAME)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Variables
-#NAME = libft.a
-#SRC = $(wildcard *.c)
-#OBJ = $(SRC:.c=.o)
-#CC = cc
-#CFLAGS = -Wall -Wextra -Werror
-#AR = ar
-#ARFLAGS = rcs
-#RM = rm -f
-
-## Default rule
-#all: $(NAME)
-
-## Create the static library
-#$(NAME): $(OBJ)
-#	$(AR) $(ARFLAGS) $@ $^
-
-## Compile .c files into .o files
-#%.o: %.c
-#	$(CC) $(CFLAGS) -c $< -o $@ -g
-
-## Create the shared library
-#so: $(OBJ)
-#	$(CC) -shared -o libft.so $(OBJ)
-
-## Remove object files
-#clean:
-#	$(RM) $(OBJ)
-
-## Remove library and object files
-#fclean: clean
-#	$(RM) $(NAME) libft.so
-
-#debug: clean
-#	$(CC) $(CFLAGS) $(SRC) -g -o a.out
-
-## Rule to recompile everything
-#re: fclean all
-
-#.PHONY: all clean fclean re so
+.PHONY : all clean fclean re

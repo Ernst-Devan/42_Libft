@@ -6,16 +6,16 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 18:45:21 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/11 17:07:16 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:50:09 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(const char *s, char c)
+static size_t	count_words(const char *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	count = 0;
 	i = 0;
@@ -34,9 +34,9 @@ static int	count_words(const char *s, char c)
 	return (count);
 }
 
-static void	cleanup(int i, char **str)
+static void	cleanup(size_t i, char **str)
 {
-	int	j;
+	size_t	j;
 
 	j = 0;
 	while (j < i)
@@ -47,10 +47,10 @@ static void	cleanup(int i, char **str)
 	free(str);
 }
 
-static void	is_set(char const *s, char c, int *i, char **result)
+static void	is_set(char const *s, char c, size_t *i, char **result)
 {
-	int	j;
-	int	m;
+	size_t	j;
+	size_t	m;
 
 	j = 0;
 	m = 0;
@@ -76,7 +76,7 @@ static void	is_set(char const *s, char c, int *i, char **result)
 	result[count_words(s, c)] = NULL;
 }
 
-static void	next_words(const char *s, int *j, int *count, char c)
+static void	next_words(const char *s, size_t *j, size_t *count, char c)
 {
 	while (s[*j] == c && s[*j])
 		(*j)++;
@@ -90,9 +90,9 @@ static void	next_words(const char *s, int *j, int *count, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	int		i;
-	int		j;
-	int		count;
+	size_t	i;
+	size_t	j;
+	size_t	count;
 
 	i = 0;
 	j = 0;

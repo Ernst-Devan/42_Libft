@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:23:44 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/11 16:04:09 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:48:41 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static int	check_set(char c, const char *set)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (set[i] != '\0')
@@ -30,8 +30,8 @@ static int	check_set(char c, const char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		start;
-	int		end;
+	size_t	start;
+	size_t	end;
 	char	*result;
 
 	start = 0;

@@ -6,13 +6,13 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:51:56 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/11 22:02:14 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:22:10 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst == NULL)
 		return (lst);

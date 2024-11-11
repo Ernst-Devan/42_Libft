@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:51:47 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/09 19:24:37 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/12 00:40:07 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	j = 0;
 	if (ft_strlen(little) == 0)
 		return ((char *)big);
-	while (i < len && big[i] != '\0')
+	while (i < len && big[i])
 	{
 		if (big[i] == little[j])
 		{
