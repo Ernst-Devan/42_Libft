@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:23:44 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/09 19:26:02 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/11 16:04:09 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "libft.h"
 
-static int	check_set(char c, char *set)
+static int	check_set(char c, const char *set)
 {
 	int	i;
 
@@ -36,12 +36,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	start = 0;
 	end = ft_strlen((char *)s1) - 1;
-	while (check_set(s1[start], (char *) set) == 1 && s1[start] != '\0')
+	while (check_set(s1[start], set) == 1 && s1[start])
 		start++;
-	while (check_set(s1[end], (char *) set) == 1 && end >= 0)
+	while (check_set(s1[end], set) == 1 && end >= 0)
 		end--;
 	if (start > end)
-		return (result = malloc(1), result[0] = '\0', result);
+	{
+		result = malloc(1);
+		if (!result)
+			return (NULL);
+		result[0] = '\0';
+		return (result);
+	}
 	result = malloc((end - start) + 2);
 	if (!result)
 		return (NULL);

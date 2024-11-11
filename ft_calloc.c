@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:28:48 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/09 19:27:53 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/11 20:31:44 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*result;
+	void	*buffer;
 
-	result = malloc(nmemb * size);
-	if (!result)
-		return (result);
-	result = ft_memset(result, 0, size * nmemb);
-	return (result);
+	buffer = malloc(nmemb * size);
+	if (!buffer)
+		return (buffer);
+	buffer = ft_memset(buffer, 0, size * nmemb);
+	return (buffer);
 }
