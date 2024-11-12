@@ -1,5 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
+NAME = libft.a
+
 SRC =	ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
@@ -39,17 +41,23 @@ SRC =	ft_isalpha.c \
 		ft_lstsize.c \
 		ft_lstlast.c \
 		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstiter.c \
+		ft_lstclear.c \
+		ft_lstmap.c 
 
 OBJ = $(SRC:.c=.o)
-NAME = libft.a
-
-%.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
+
+%.o: %.c libft.h
+	$(CC) $(CFLAGS) -c $< -o $@
+bonus: all
+
+debug:
+	$(CC) $(SRC) $(CFLAGS) -g
 
 clean: 
 	rm -f $(OBJ)
@@ -57,6 +65,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY : all clean fclean re
