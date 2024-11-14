@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:28:48 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/11 20:31:44 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/14 15:21:36 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*buffer;
 
+	if (nmemb != 0)
+	{
+		if (nmemb / (2147483647) > size)
+			return (malloc(0));
+	}
 	buffer = malloc(nmemb * size);
 	if (!buffer)
 		return (buffer);

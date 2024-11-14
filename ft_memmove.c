@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 23:28:57 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/11 17:07:44 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/13 16:52:54 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
-	if (dest == NULL && src == NULL)
+	if (dest == NULL && src == NULL && n == 0)
 		return (dest);
 	if (dest > src)
 	{

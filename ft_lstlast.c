@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 21:51:56 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/12 00:22:10 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/13 17:26:02 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstlast(t_list *lst)
 		return (lst);
 	if (lst->next == NULL)
 		return (lst);
-	while (lst->next)
+	while (lst->next != NULL)
 		lst = lst->next;
 	return (lst);
 }
