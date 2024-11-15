@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 21:31:24 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/15 11:52:37 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/15 12:14:01 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	ft_atoi(const char *nptr)
 	}
 	while (nptr[i] >= 48 && nptr[i] <= 57)
 	{
-		if (check_overflow(result, sign) == -1
-			|| check_overflow(result, sign) == 0)
-			return (check_overflow(result, sign));
 		result *= 10;
 		result += nptr[i] - '0';
 		i++;
+		if (check_overflow(result, sign) == -1
+			|| check_overflow(result, sign) == 0)
+			return (check_overflow(result, sign));
 	}
 	return (result * sign);
 }
