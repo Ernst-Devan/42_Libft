@@ -6,11 +6,9 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:23:44 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/14 18:35:35 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/15 13:29:41 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
-// Problem with space : start / end
 
 #include "libft.h"
 
