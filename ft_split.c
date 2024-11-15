@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 18:45:21 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/12 00:50:09 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/14 17:50:59 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static void	is_set(char const *s, char c, size_t *i, char **result)
 			(*i)--;
 			result[j][m] = '\0';
 			m = 0;
-			if (j >= count_words(s, c))
-				break ;
 			j++;
 		}
 		(*i)++;

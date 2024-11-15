@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:47:23 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/12 00:43:15 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/14 18:32:46 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		write(fd, &s[i++], 1);
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }

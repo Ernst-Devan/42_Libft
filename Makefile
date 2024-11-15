@@ -35,36 +35,46 @@ SRC =	ft_isalpha.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
-		ft_lstnew.c \
-		ft_lstadd_front.c \
-		ft_lstsize.c \
-		ft_lstlast.c \
-		ft_lstadd_back.c \
-		ft_lstdelone.c \
-		ft_lstiter.c \
-		ft_lstclear.c \
-		ft_lstmap.c 
+		ft_putnbr_fd.c
+
+SRC_BONUS =		$(SRC)\
+				ft_lstnew_bonus.c \
+				ft_lstadd_front_bonus.c \
+				ft_lstsize_bonus.c \
+				ft_lstlast_bonus.c \
+				ft_lstadd_back_bonus.c \
+				ft_lstdelone_bonus.c \
+				ft_lstiter_bonus.c \
+				ft_lstclear_bonus.c \
+				ft_lstmap_bonus.c 
 
 OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
+
+.PHONY: all
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) 
 	ar rcs $(NAME) $(OBJ)
 
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
-bonus: all
 
+.PHONY: bonus
+bonus:
+	@make "SRC= $(SRC_BONUS)"
+
+.PHONY: debug
 debug:
 	$(CC) $(SRC) $(CFLAGS) -g
 
+.PHONY: clean
 clean: 
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 
+.PHONY: fclean
 fclean: clean
 	rm -f $(NAME)
 
+.PHONY: re
 re: fclean all
-
-.PHONY : all clean fclean re

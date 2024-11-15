@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 18:07:56 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/14 15:21:59 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/14 18:16:12 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define LIBFT_H
 
 # include "stdlib.h"
-# include "stdio.h"
-# include "string.h"
+# include "limits.h"
 # include "unistd.h"
 
 int		ft_isalpha(int c);

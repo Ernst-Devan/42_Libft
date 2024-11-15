@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernstdevan <ernstdevan@student.42.fr>      +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 17:40:16 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/10/15 15:06:12 by ernstdevan       ###   ########.fr       */
+/*   Updated: 2024/11/14 19:08:40 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isascii(int c)
 {

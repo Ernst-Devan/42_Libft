@@ -6,15 +6,15 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 23:07:42 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/12 00:42:48 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/14 18:30:11 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	intlen(long int n)
+static size_t	intlen(long int n)
 {
-	unsigned int	count;
+	size_t	count;
 
 	count = 0;
 	if (n == 0)
