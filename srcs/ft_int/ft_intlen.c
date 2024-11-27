@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 18:42:52 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/18 21:53:27 by dernst           ###   ########lyon.fr   */
+/*   Created: 2024/11/27 14:30:51 by dernst            #+#    #+#             */
+/*   Updated: 2024/11/27 23:28:33 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+size_t	ft_intlen(long int n)
 {
-		write(fd, &s, ft_strlen(s));
+	size_t	count;
+
+	if (n < 0)
+		n *= -1;
+	count = 0;
+	if (n == 0)
+		n++;
+	while (n > 0)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
 }
