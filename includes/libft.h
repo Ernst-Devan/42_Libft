@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 18:07:56 by ernstdevan        #+#    #+#             */
-/*   Updated: 2024/11/27 23:30:56 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/12/15 18:35:19 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_putnbr_base(int n, char *base);
+char	*ft_putunbr_base(unsigned long int n, char *base);
 
 	//FT_TO
 	//=======================================
@@ -77,6 +78,7 @@ char	*ft_itoa(int n);
 	//=======================================
 size_t	ft_intlen(long int n);
 size_t	ft_intlen_base(int n, int base);
+size_t	ft_uintlen_base(unsigned long int n, size_t base);
 
 	//FT_ALLOC
 	//=======================================
@@ -102,5 +104,9 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+	//FT_PRINTF
+	//=======================================
+int	ft_printf(const char *format, ...);
 
 #endif
