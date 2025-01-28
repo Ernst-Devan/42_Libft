@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/09 18:42:52 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/28 11:56:06 by dernst           ###   ########lyon.fr   */
+/*   Created: 2025/01/28 16:09:28 by dernst            #+#    #+#             */
+/*   Updated: 2025/01/28 17:18:54 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr_fd(char *s, int fd)
+int	ft_isspace(int c)
 {
-	write(fd, s, ft_strlen(s));
+	if ((c >= 9 && c <= 13)|| c == 32)
+		return (1);
+	return (0);
 }

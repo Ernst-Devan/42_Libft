@@ -1,4 +1,4 @@
-# =======================================
+#========================================
 # Main Variables - Variables / Values
 # =======================================
 
@@ -16,15 +16,16 @@ SRC_D		=	srcs/
 BIN_D		=	bin/
 INCLUDES_D	=	-Iincludes/
 
-FT_IS_D		=	ft_is/
-FT_STR_D	=	ft_str/
-FT_MEM_D	=	ft_mem/
-FT_PUT_D	=	ft_put/
-FT_INT_D	=	ft_int/
-FT_TO_D		=	ft_to/
-FT_ALLOC_D	=	ft_alloc/
-FT_LST_D	=	ft_lst/
-FT_PRINTF_D	=	ft_printf/
+FT_IS_D		=	is/
+FT_STR_D	=	str/
+FT_MEM_D	=	memory/
+FT_PUT_D	=	write/
+FT_INT_D	=	int/
+FT_TO_D		=	to/
+FT_ALLOC_D	=	allocation/
+FT_LST_D	=	chained_list/
+FT_PRINTF_D	=	printf/
+GNL_D 		= 	gnl/
 
 # =======================================
 # Source Files - Character Checks
@@ -36,7 +37,9 @@ FT_IS_SRC =						\
 	ft_isalnum.c				\
 	ft_isascii.c				\
 	ft_isprint.c				\
-	main.c
+	ft_isspace.c				\
+	ft_islower.c				\
+	ft_isupper.c				\
 
 # =======================================
 # Source Files - String Functions
@@ -57,6 +60,7 @@ FT_STR_SRC =					\
 	ft_split.c					\
 	ft_strmapi.c				\
 	ft_striteri.c				\
+	ft_strtol.c					\
 	ft_bzero.c
 
 # =======================================
@@ -128,6 +132,14 @@ FT_PRINTF_SRC =					\
 	utils_printf.c
 
 # =======================================
+# Source Files - GetNextLine
+# =======================================
+
+GNL_SRC		 =					\
+	get_next_line.c				\
+	get_next_line_utils.c
+
+# =======================================
 # Adding Paths to the Source Files
 # =======================================
 
@@ -140,18 +152,19 @@ FT_TO_SRC		:=	$(addprefix $(SRC_D)$(FT_TO_D),		$(FT_TO_SRC))
 FT_ALLOC_SRC	:=	$(addprefix $(SRC_D)$(FT_ALLOC_D),	$(FT_ALLOC_SRC))
 FT_LST_SRC		:=	$(addprefix $(SRC_D)$(FT_LST_D),	$(FT_LST_SRC))
 FT_PRINTF_SRC	:=	$(addprefix $(SRC_D)$(FT_PRINTF_D),	$(FT_PRINTF_SRC))
+GNL_SRC			:=	$(addprefix $(SRC_D)$(GNL_D),		$(GNL_SRC))
 
 # =======================================
 # Combine All Sources Files
 # =======================================
 
-SRCS = $(FT_IS_SRC) $(FT_STR_SRC) $(FT_MEM_SRC) $(FT_PUT_SRC) $(FT_INT_SRC) $(FT_TO_SRC) $(FT_ALLOC_SRC) $(FT_LST_SRC) $(FT_PRINTF_SRC)
+SRCS = $(FT_IS_SRC) $(FT_STR_SRC) $(FT_MEM_SRC) $(FT_PUT_SRC) $(FT_INT_SRC) $(FT_TO_SRC) $(FT_ALLOC_SRC) $(FT_LST_SRC) $(FT_PRINTF_SRC) $(GNL_SRC)
 
 # =======================================
 # Objets Files
 # =======================================
 
-OBJ_DIRS = $(addprefix $(OBJ_D), $(FT_IS_D) $(FT_STR_D) $(FT_MEM_D) $(FT_PUT_D) $(FT_INT_D) $(FT_TO_D) $(FT_ALLOC_D) $(FT_LST_D)) $(FT_PRINTF_D)
+OBJ_DIRS = $(addprefix $(OBJ_D), $(FT_IS_D) $(FT_STR_D) $(FT_MEM_D) $(FT_PUT_D) $(FT_INT_D) $(FT_TO_D) $(FT_ALLOC_D) $(FT_LST_D)) $(FT_PRINTF_D) $(GNL_D)
 OBJS = $(SRCS:$(SRC_D)%.c=$(OBJ_D)%.o)
 
 # =======================================
@@ -166,7 +179,7 @@ $(NAME): $(OBJS)
 
 $(OBJ_D)%.o: $(SRC_D)%.c includes/libft.h includes/ft_printf.h
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(BIN_D):
 	mkdir -p $(BIN_D)
@@ -174,7 +187,8 @@ $(BIN_D):
 
 .PHONY: debug
 debug: $(OBJS) | $(BIN_D)
-	$(CC) $(OBJS) $(CFLAGS) -g -o $(BIN_D)a.out
+	@$(CC) $(OBJS) $(CFLAGS) -g -o $(BIN_D)a.out
+	cd bin && ./a.out
 
 .PHONY: clean
 clean: 
