@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:53:24 by dernst            #+#    #+#             */
-/*   Updated: 2025/01/28 23:20:04 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2025/01/29 13:53:37 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 
 	s = nptr;
 	neg = 0;
-	c = *s++;
+	c = s[0];
 	while (ft_isspace(c))
 		c = *s++;
 	if (c == '-')
 	{
 		neg = 1;
-		c = *s++;	
+		c = *s++;
 	}
-	else if(c == '+')
+	else if (c == '+')
 	{
 		c = *s++;
 	}
-	if (base == 0 || (base == 16 && c == '0' && (*s == 'x' || *s == 'X')))
+	if (((base == 0 || base == 16) && c == '0' && (*s == 'x' || *s == 'X')))
 	{
 		c = s[1];
 		s += 2;
@@ -62,7 +62,7 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 
 	acc = 0;
 	any = 0;
-	while (*s != '\0')
+	while (c)
 	{
 		if (ft_isdigit(c))
 			c -= '0';
@@ -108,9 +108,11 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 
 int	main(void)
 {
-	char test[15] = " 21474836487\0";
+	char test[100] = " 	0x42";
 	char **nptr = NULL;
+	char **nptr1 = NULL;
 	int number;
-	number = ft_strtol(test, nptr , 10);
-	ft_printf("%d", number);
+	number = ft_strtol(test, nptr , 0);
+	ft_printf("\n%d", number);
+	ft_printf("\n%d", strtol(test, nptr1, 0));
 }
