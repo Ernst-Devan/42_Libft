@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 18:07:56 by ernstdevan        #+#    #+#             */
-/*   Updated: 2025/01/28 23:02:00 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2025/01/30 22:24:32 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,18 @@ int		ft_isspace(int c);
 int		ft_isupper(int c);
 int		ft_islower(int c);
 
-
 	// FT_STR
 	//=======================================
+
+typedef struct s_limits
+{
+	int		c;
+	int		clim;
+	int		neg;
+	size_t	coff;
+	int		base;
+}	t_limits;
+
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t n);
 size_t	ft_strlcat(char *dest, const char *src, size_t n);
@@ -111,6 +120,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 	//FT_PRINTF
 	//=======================================
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
 #endif

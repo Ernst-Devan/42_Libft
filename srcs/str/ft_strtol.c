@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:53:24 by dernst            #+#    #+#             */
-/*   Updated: 2025/01/29 13:53:37 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2025/01/30 22:22:19 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,105 +14,98 @@
 #include "limits.h"
 #include "errno.h"
 
-long	ft_strtol(const char *nptr, char **endptr, int base)
+const char	*start_manage(const char *nptr, t_limits *limits)
 {
-	const char		*s;
-	unsigned long	acc;
-	int				c;
-	unsigned long	cutoff;
-	int				cutlim;
-	int				any;
-	int				neg;
+	const char	*s;
+	int			c;
 
+	limits->neg = 0;
 	s = nptr;
-	neg = 0;
 	c = s[0];
 	while (ft_isspace(c))
 		c = *s++;
-	if (c == '-')
+	if (c == '-' || c == '+')
 	{
-		neg = 1;
+		if (c == '-')
+			limits->neg = 1;
 		c = *s++;
 	}
-	else if (c == '+')
-	{
-		c = *s++;
-	}
-	if (((base == 0 || base == 16) && c == '0' && (*s == 'x' || *s == 'X')))
+	limits->coff = LONG_MAX;
+	if (limits->neg)
+		limits->coff = -(unsigned long)LONG_MIN;
+	if (limits->base == 16 && c == '0' && (*s == 'x' || *s == 'X'))
 	{
 		c = s[1];
 		s += 2;
-		base = 16;
 	}
-	if (base == 0)
-	{
-		if (c == 0)
-			base = 8;
-		else
-			base = 10;
-	}
-	
-	if (neg)
-		cutoff = -(unsigned long)LONG_MIN;
-	else
-		cutoff = LONG_MAX;
-	
-	cutlim = cutoff % (unsigned long)base;
-	cutoff /= (unsigned long)base;
+	limits->clim = limits->coff % (unsigned long)limits->base;
+	limits->coff /= (unsigned long)limits->base;
+	return (s);
+}
 
-	acc = 0;
-	any = 0;
-	while (c)
+void	atoi_part(char *nptr, t_limits lim, size_t *ac, int *any)
+{
+	lim.c = nptr[-1];
+	while (lim.c)
 	{
-		if (ft_isdigit(c))
-			c -= '0';
-		else if (ft_isalpha(c))
+		if (ft_isdigit(lim.c))
+			lim.c -= '0';
+		else if (ft_isalpha(lim.c))
 		{
-			if (ft_isupper(c))
-				c -= 'A' - 10;
+			if (ft_isupper(lim.c))
+				lim.c -= 'A' - 10;
 			else
-				c -= 'a' - 10;
+				lim.c -= 'a' - 10;
 		}
 		else
-			break;
-		if (c >= base)
-			break;
-		if (any < 0 || acc > cutoff || (acc == cutoff && c > cutlim))
-			any = -1;
+			break ;
+		if (lim.c >= lim.base)
+			break ;
+		if (*any < 0 || *ac > lim.coff || (*ac == lim.coff && lim.c > lim.clim))
+			*any = -1;
 		else
 		{
-			any = 1;
-			acc *= base;
-			acc += c;
+			*any = 1;
+			*ac = *ac * lim.base + lim.c;
 		}
-		c = *s++;
+		lim.c = *nptr++;
 	}
-	
-	if (any < 0)
-	{
-		if (neg)
-			acc = LONG_MIN;
-		else
-			acc = LONG_MAX;
-	} else if (neg)
-		acc = -acc;
+}
+
+void	manage_pointer(char **endptr, const char *nptr, int any)
+{
 	if (endptr != 0)
 	{
 		if (any)
-			*endptr = (char *) s - 1;
+			*endptr = (char *) nptr - 1;
 		else
-			*endptr = (char *)nptr; 
+			*endptr = (char *)nptr;
 	}
-	return (acc);
 }
 
-int	main(void)
+long	ft_strtol(const char *nptr, char **endptr, int base)
 {
-	char test[100] = " 	0x42";
-	char **nptr = NULL;
-	char **nptr1 = NULL;
-	int number;
-	number = ft_strtol(test, nptr , 0);
-	ft_printf("\n%d", number);
-	ft_printf("\n%d", strtol(test, nptr1, 0));
+	t_limits		limits;
+	const char		*s;
+	size_t			acc;
+	int				c;
+	int				any;
+
+	limits.base = base;
+	s = start_manage(nptr, &limits);
+	c = s[-1];
+	acc = 0;
+	any = 0;
+	atoi_part((char *)s, limits, &acc, &any);
+	if (any < 0)
+	{
+		if (limits.neg)
+			acc = LONG_MIN;
+		else
+			acc = LONG_MAX;
+	}
+	else if (limits.neg)
+		acc = -acc;
+	manage_pointer(endptr, nptr, any);
+	return (acc);
 }

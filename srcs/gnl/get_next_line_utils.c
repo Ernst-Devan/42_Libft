@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:12:00 by dernst            #+#    #+#             */
-/*   Updated: 2025/01/28 17:44:16 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2025/01/30 22:25:09 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*gnl_ft_calloc(size_t nmemb, size_t size)
 	return (buffer);
 }
 
-char	*gnl_ft_substr(char *s, size_t len, size_t *is_end, size_t *buffer_start)
+char	*gnl_ft_substr(char *s, size_t len, size_t *is_end, size_t *buffer)
 {
 	char	*str;
 	char	*src;
@@ -62,7 +62,7 @@ char	*gnl_ft_substr(char *s, size_t len, size_t *is_end, size_t *buffer_start)
 		}
 		i++;
 	}
-	*buffer_start = i;
+	*buffer = i;
 	return (str);
 }
 
